@@ -1,4 +1,4 @@
-package com.rlearning.producer;
+package com.rlearning.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
