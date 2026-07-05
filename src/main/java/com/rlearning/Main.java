@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.rlearning.consumer.Consumer;
+import com.rlearning.flink.TemperatureAverageJob;
 import com.rlearning.producer.Producer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -19,8 +20,10 @@ public class Main {
         if (args[0].equals("P"))
         {
             Producer.sendMessage();
-        } else {
+        } else if (args[0].equals("C")) {
             Consumer.consumeMessages();
+        } else {
+            TemperatureAverageJob.computeAverages();
         }
     }
 

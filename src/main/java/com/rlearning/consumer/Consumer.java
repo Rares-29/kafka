@@ -19,10 +19,14 @@ public class Consumer {
         KafkaConsumer<Integer, String> consumer = new KafkaConsumer<>(properties);
         consumer.subscribe(List.of("sensor-temperature"));
         while (true) {
-        ConsumerRecords<Integer, String> records = consumer.poll(Duration.ofMillis(10));
+        ConsumerRecords<Integer, String> records = consumer.poll(Duration.ofMillis(1000));
         for (ConsumerRecord<Integer, String> record : records) {
-            System.out.println("Key: " + record.key() + "Value: " + record.value());
-        }
+            System.out.println(
+                    "partition=" + record.partition()
+                            + ", offset=" + record.offset()
+                            + ", key=" + record.key()
+                            + ", value=" + record.value()
+            );        }
         }
     }
 }
